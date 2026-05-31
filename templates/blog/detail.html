@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Блогикум — {{ post.location }} — {{ post.date }}{% endblock %}
+{% block content %}
+  <article class="post post--detail">
+    <h1 class="post__title">Дневник Робинзона Крузо</h1>
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <span class="post__label">Дата:</span>
+        <time class="post__date">{{ post.date }}</time>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__label">Категория:</span>
+        <a class="post__category" href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
+      </li>
+      {% if post.location %}
+        <li class="post__meta-item">
+          <span class="post__label">Место:</span>
+          <span class="post__location">{{ post.location }}</span>
+        </li>
+      {% endif %}
+    </ul>
+    <div class="post__body">
+      <p class="post__text">{{ post.text|linebreaksbr }}</p>
+    </div>
+    <a class="post__back" href="{% url 'blog:index' %}">← Назад к списку</a>
+  </article>
+{% endblock %}

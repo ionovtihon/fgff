@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Блогикум — Категория: {{ category_slug }}{% endblock %}
+{% block content %}
+  <h1 class="page-title">Публикации в категории — {{ category_slug }}</h1>
+  <p class="category-description">Здесь будут отображаться все публикации, относящиеся к категории <strong>{{ category_slug }}</strong>.</p>
+  <a class="post__back" href="{% url 'blog:index' %}">← Назад к списку</a>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Блогикум — Главная{% endblock %}
+{% block content %}
+  <h1 class="page-title">Лента публикаций</h1>
+  {% for post in posts %}
+    <article class="post post--preview">
+      <ul class="post__meta">
+        <li class="post__meta-item">
+          <span class="post__label">Дата:</span>
+          <time class="post__date">{{ post.date }}</time>
+        </li>
+        <li class="post__meta-item">
+          <span class="post__label">Категория:</span>
+          <a class="post__category" href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
+        </li>
+        {% if post.location %}
+          <li class="post__meta-item">
+            <span class="post__label">Место:</span>
+            <span class="post__location">{{ post.location }}</span>
+          </li>
+        {% endif %}
+      </ul>
+      <p class="post__text">{{ post.text|truncatewords:50 }}</p>
+      <a class="post__link" href="{% url 'blog:post_detail' post.id %}">Читать полностью</a>
+    </article>
+  {% empty %}
+    <p class="empty-message">Пока нет ни одной публикации.</p>
+  {% endfor %}
+{% endblock %}

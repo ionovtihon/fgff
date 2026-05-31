@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Блогикум{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <a class="nav__logo" href="{% url 'blog:index' %}">Блогикум</a>
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a class="nav__link" href="{% url 'blog:index' %}">Главная</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="{% url 'pages:about' %}">О проекте</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="{% url 'pages:rules' %}">Правила</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        {% block content %}{% endblock %}
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="footer__text">Блогикум © 2026. Социальная сеть для публикации личных дневников.</p>
+      </div>
+    </footer>
+  </body>
+</html>
